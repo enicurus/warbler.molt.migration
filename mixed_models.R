@@ -8,6 +8,7 @@ Mixed models
 
 library(MuMIn)
 library(MCMCglmm)
+library(caper)
 
 ##Maybe just use PGLS and design models by hand
 ## Use correlation matrix to build models
