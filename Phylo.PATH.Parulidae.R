@@ -106,7 +106,7 @@ CICc1<-CICc(C1,9,49)
 #2.5 (pa,strat){dl,mig}
 	m2.5<-pgls(strat~dl+mig+pa,data=com.dat,lambda="ML");m2.5p<-summary(m2.5)$coefficients["pa",4]
 #2.6(mig,pa){dl}
-	m2.6<-pgls(pa~dl+mig,data=com.dat,lambda="ML";m2.6p<-summary(m2.6)$coefficients["mig",4]
+	m2.6<-pgls(pa~dl+mig,data=com.dat,lambda="ML");m2.6p<-summary(m2.6)$coefficients["mig",4]
 
 C2<--2*(log(m2.1p)+log(m2.2p)+log(m2.3p)+log(m2.4p)+log(m2.5p)+log(m2.6p))
 C2.pval<-1-pchisq(C2,2*6)
@@ -120,7 +120,7 @@ CICc2<-CICc(C2,6,49)
 #3.1 (dl,sd){mig,pa} = 1.1
 	m3.1<-m1.1;m3.1p<-m1.1p
 #3.2 (pa,strat){mig}
-	m3.2<-pgls(strat~mig+pa,data=com.dat,lambda="ML"),m3.2p<-summary(m3.2)$coefficients["pa",4]
+	m3.2<-pgls(strat~mig+pa,data=com.dat,lambda="ML");m3.2p<-summary(m3.2)$coefficients["pa",4]
 #3.3 (dl,strat){mig} = 1.3
 	m3.3<-m1.3;m3.3p<-m1.3p
 #3.4 (mig,sd){pa} = 1.5
@@ -128,7 +128,7 @@ CICc2<-CICc(C2,6,49)
 #3.5 (mig,strat){\(varnothing\)} = 1.6
 	m3.5<-m1.6;m3.5p<-m1.6p
 #3.6 (dl,pa){mig}
-	m3.6<-pgls(pa~mig+dl,data=com.dat,lambda="ML")m3.6p<-summary(m3.6)$coefficiants["dl",4]
+	m3.6<-pgls(pa~mig+dl,data=com.dat,lambda="ML");m3.6p<-summary(m3.6)$coefficients["dl",4]
 
 
 C3<--2*(log(m3.1p)+log(m3.2p)+log(m3.3p)+log(m3.4p)+log(m3.5p)+log(m3.6p))
@@ -250,11 +250,11 @@ CICc7<-CICc(C7,9,49)
 #8.3 (mig,pa),{/(varnothing)}
 	m8.3<-pgls(pa~mig,data=com.dat,lambda="ML");m8.3p<-summary(m8.3)$coefficients["mig",4]
 #8.4 (strat,sd){pa,mig}
-	m8.4<-pgls(sd~pa+mig+strat,data=com.dat,lambda-"ML");m8.4p<-summary(m8.4)$coefficients["strat",4]
+	m8.4<-pgls(sd~pa+mig+strat,data=com.dat,lambda="ML");m8.4p<-summary(m8.4)$coefficients["strat",4]
 #8.5 (strat,mig){/(varnothing)}
 	m8.5<-pgls(mig~strat,data=com.dat,lambda="ML");m8.5p<-summary(m8.5)$coefficients["strat",4]
 #8.6 (dl,pa){strat}
-	m8.5<-pgls(pa~strat,data=com.dat,lambda="ML")m8.6p<-summary(m8.6)$coefficients["dl",4]
+	m8.6<-pgls(pa~strat+dl,data=com.dat,lambda="ML");m8.6p<-summary(m8.6)$coefficients["dl",4]
 
 
 C8<--2*(log(m8.1p)+log(m8.2p)+log(m8.3p)+log(m8.4p)+log(m8.5p)+log(m8.6p))
@@ -282,9 +282,9 @@ CICc8<-CICc(C8,6,49)
 #9.7 (mig,pa){strat,dl}
 	m9.7<-pgls(pa~strat+dl+mig,data=com.dat,lambda="ML");m9.7p<-summary(m9.7)$coefficients["mig",4]
 #9.8 (mass,pa){dl}
-	m9.9<-pgls(pa~dl+mass,data=com.dat,lambda="ML");m9.8p<-summary(m9.8)$coefficients["mass",4]
+	m9.8<-pgls(pa~dl+mass,data=com.dat,lambda="ML");m9.8p<-summary(m9.8)$coefficients["mass",4]
 #9.9 (mass,sd){dl,pa,mig}
-	m9.9<-pgls(dl~pa+sd+mass+mig,data=com.dat,lambda="ML");m9.9p<-summary(m9.9)$coefficients["sol",4]
+	m9.9<-pgls(dl~pa+sd+mass+mig,data=com.dat,lambda="ML");m9.9p<-summary(m9.9)$coefficients["mass",4]
 	
 
 C9<--2*(log(m9.1p)+log(m9.2p)+log(m9.3p)+log(m9.4p)+log(m9.5p)+log(m9.6p)+log(m9.7p)+log(m9.8p)+log(m9.9p))
@@ -329,16 +329,16 @@ CICc10<-CICc(C10,6,49)
 #11.2 (strat,dl){mig} = 8.6
 	m11.2<-m8.6;m11.2p<-m8.6p
 #11.3 (strat,pa){(/varnothing)}
-	m11.3<-pgls(pa~strat,data=com.dat,lambda="ML");m11.3p<-summary(m11.5)$coefficients["strat",4]
+	m11.3<-pgls(pa~strat,data=com.dat,lambda="ML");m11.3p<-summary(m11.3)$coefficients["strat",4]
 #11.4 (strat,sd){pa} = 9.5
 	m11.4<-m9.5;m11.4p<-m9.5p
 #11.5 (dl,pa){mig}
-	m11.5<-pgls(mig~sol+pa+dl,data=com.dat,lambda="ML");m11.5p<-summary(m11.7)$coefficients["dl",4]
+	m11.5<-pgls(mig~sol+pa+dl,data=com.dat,lambda="ML");m11.5p<-summary(m11.5)$coefficients["dl",4]
 #11.6 (dl,sd){mig,pa} = 1.1
 	m11.6<-m1.1;m11.6p<-m1.1p
 
 	
-C11<--2*(log(m11.1p)+log(m11.2p)+log(m11.3p)+log(m11.4p)+log(m11.5p)+log(m11.6p)+log(m11.7p)+log(m11.8p)+log(m11.9p))
+C11<--2*(log(m11.1p)+log(m11.2p)+log(m11.3p)+log(m11.4p)+log(m11.5p)+log(m11.6p))
 C11.pval<-1-pchisq(C11,2*6)
 CICc11<-CICc(C11,6,49)
 
@@ -357,20 +357,17 @@ CICc11<-CICc(C11,6,49)
 	m12.5<-m4.1;m12.5p<-m4.1p
 #12.6 (dl,strat){mig} = 1.3
 	m12.6<-m1.3;m12.6p<-m1.3p
-#12.7 (sol,sd){dl,pa} = 9.10
-	m12.7<-m9.10;m12.7p<-m9.10p
+#12.7 (sol,sd){dl,pa}
+	m12.7<-pgls(sd~dl+pa+sol,data=com.dat,lambda="ML");m12.7p<-summary(m12.7)$coefficients["sol",4]
 #12.8 (sol,strat){dl} = 2.8
-	m12.8<-m2.8;m12.8p<-m2.8p
+	m12.8<-pgls(strat~dl+sol,data=com.dat,lambda="ML");m12.8p<-summary(m12.8)$coefficients["sol",4]
 #12.9 (pa,strat){sol,dl} = 5.9
-	m12.9<-m5.9;m12.9p<-m5.9p
+	m12.9<-pgls(strat~sol+dl+pa,data=com.dat,lambda="ML");m12.9p<-summary(m12.9)$coefficients["pa",4]
+
 
 C12<--2*(log(m12.1p)+log(m12.2p)+log(m12.3p)+log(m12.4p)+log(m12.5p)+log(m12.6p)+log(m12.7p)+log(m12.8p)+log(m12.9p))
 C12.pval<-1-pchisq(C12,2*9)
 CICc12<-CICc(C12,9,49)
-
-
-
-###models 4, 8 and 10 are overweighted because few CI's - maybe change or increase CIs ####
 
 
 model.all <- c("Model 1", "Model 2", "Model 3", "Model 4", "Model 5", "Model 6", "Model 7", "Model 8", "Model 9","Model 10","Model 11","Model 12")
