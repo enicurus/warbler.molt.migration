@@ -101,8 +101,7 @@ anovaTree<-drop.tip(warTree,setdiff(warTree$tip.label,rownames(paMig)))
 
 paHeadanova<-phylANOVA(anovaTree,x=paHead,y=paMigDist,nsim=1000,posthoc=T)
 
-
-
+#migratory distance vs. PA in feather regions ANOVAs
 
 anovaMatrix<-function(responseMatrix,predictor,phy){
 		responseMatrix<-responseMatrix[complete.cases(responseMatrix),]
@@ -111,6 +110,7 @@ anovaMatrix<-function(responseMatrix,predictor,phy){
 		out<-list()
 		out$params<-list()
 		out$p<-matrix(nrow=ncol(responseMatrix),ncol=1)
+		out$f<--matrix(nrow=ncol(responseMatrix),ncol=1)
 		rM<-list()
 		for(i in 1:ncol(responseMatrix)){
 			rM[[i]]<-responseMatrix[,i]
@@ -118,6 +118,7 @@ anovaMatrix<-function(responseMatrix,predictor,phy){
 				names(rM[[i]])<-rownames(responseMatrix)
 			out$params[[i]]<-phylANOVA(tree,x=factor(rM[[i]],levels=c(0,1)),y=predictor,posthoc=TRUE)
 			out$p[i,]<-out$params[[i]]$Pf
+			out$f[i,]<-out$params[[i]]$F
 			}
 		names(out$params)<-colnames(responseMatrix)
 		rownames(out$p)<-colnames(responseMatrix)
